@@ -1,5 +1,4 @@
 import math
-import sys
 
 
 def get_most_probable_path(hmm, sequence):
@@ -43,7 +42,7 @@ def get_most_probable_path(hmm, sequence):
     pos_counter += 1
 
     for res in sequence[1:]:
-        print(res)
+        # print(res)
 
         viterbi_matrix.append([])
 
@@ -65,23 +64,64 @@ def get_most_probable_path(hmm, sequence):
                 else:
                     emp_log = -999
 
-                print("posición: %s, Transición(%s->%s):%s, Emisión(%s):%s"%(pos_counter,Lstate,state,tr_p,res,em_p))
+                # print("posición: %s, Transición(%s->%s):%s, Emisión(%s):%s"%(pos_counter,Lstate,state,tr_p,res,em_p))
 
                 if pos_counter > 1:
                     temp = trp_log + emp_log + viterbi_matrix[pos_counter-1][index_dic[Lstate]-1][1]
                 else:
                     temp = trp_log + emp_log + viterbi_matrix[pos_counter - 1][index_dic[Lstate] - 1]
 
-                print(temp)
+                # print(temp)
 
                 vik.append((Lstate, temp))
 
-            print("\n")
+            # print("\n")
             viterbi_matrix[pos_counter].append(max(vik, key=lambda x: x[1]))
         pos_counter += 1
 
-    return viterbi_matrix
+    for i in range(len(viterbi_matrix[0])):
+        for j in range(len(viterbi_matrix)):
+            if j == 0:
+                print("%10.4f\t" % viterbi_matrix[j][i], end="")
+            else:
+                print("%7s, %10.4f\t " % (viterbi_matrix[j][i][0], viterbi_matrix[j][i][1]), end="")
 
+        print("\n")
+
+    states_path = []
+    start = True
+
+    for position in viterbi_matrix[::-1]:
+        if start:
+            max_state = max(position, key=lambda x: x[1])
+            state_index = position.index(max_state)
+
+            print("state_index = %s" % state_index)
+
+            for state, index in index_dic.items():
+                if index == state_index+1:
+
+                    states_path.append(state)
+                    next_state = max_state[0]
+
+            start = False
+
+        else:
+
+            state_index = index_dic[next_state]
+            states_path.append(next_state)
+            if type(position[state_index-1]) == tuple:
+                next_state = position[state_index-1][0]
+
+
+
+
+    states_path_str = " , ".join(states_path[::-1])
+
+
+
+    # return viterbi_matrix
+    return states_path_str
 
 seq = "ACCCGAGTAA"
 
@@ -97,13 +137,15 @@ hmm = {
             [0.0, 0.0, 0.0, 1.0]]
 }
 
-viterbi_mat = get_most_probable_path(hmm, seq)
+viterbi_path = get_most_probable_path(hmm, seq)
 
-for i in range(len(viterbi_mat[0])):
-    for j in range(len(viterbi_mat)):
-        if j == 0:
-            print("%10.4f\t" % viterbi_mat[j][i], end="")
-        else:
-            print("%7s, %10.4f\t " % (viterbi_mat[j][i][0], viterbi_mat[j][i][1]), end="")
+# for i in range(len(viterbi_mat[0])):
+#     for j in range(len(viterbi_mat)):
+#         if j == 0:
+#             print("%10.4f\t" % viterbi_mat[j][i], end="")
+#         else:
+#             print("%7s, %10.4f\t " % (viterbi_mat[j][i][0], viterbi_mat[j][i][1]), end="")
+#
+#     print("\n")
 
-    print("\n")
+print(viterbi_path)
