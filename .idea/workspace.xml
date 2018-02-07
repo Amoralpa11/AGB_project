@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="daffdb30-6ff2-4822-baf0-ea3ffa5a3ed8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/IC.py" afterPath="$PROJECT_DIR$/IC.py" />
-      <change beforePath="$PROJECT_DIR$/emp.py" afterPath="$PROJECT_DIR$/emp.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -226,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518011565279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Merge branch 'master' of https://github.com/Amoralpa11/AGB_project&#10;&#10;# Conflicts:&#10;#&#9;emp.py">
+      <created>1518012231652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518012231652</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
