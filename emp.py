@@ -22,6 +22,7 @@ def emp_calc(input_str):
     return values
 
 
+
 def calculation_emp(start, rang = 1):
     with open("5_data_set.txt") as fh:
 
@@ -38,6 +39,23 @@ emp_matrix = []
 
 for i in ls:
     emp_matrix.append(calculation_emp(i[0],i[1]))
+
+# print(emp_matrix)
+
+
+states = ["begin","exon","min2","min1","g","t","more1","more2","more3","intron"]
+trp = [[0,1,0,0,0,0,0,0,0,0],
+       [0,0.95,0.05,0,0,0,0,0,0,0],
+       [0,0,0,1,0,0,0,0,0,0],
+       [0,0,0,0,1,0,0,0,0,0],
+       [0,0,0,0,0,1,0,0,0,0],
+       [0,0,0,0,0,0,1,0,0,0],
+       [0,0,0,0,0,0,0,1,0,0],
+       [0,0,0,0,0,0,0,0,1,0],
+       [0,0,0,0,0,0,0,0,0,1],
+       [0,0,0,0,0,0,0,0,0,1]]
+
+
 
 # print(emp_matrix)
 
