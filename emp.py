@@ -1,6 +1,5 @@
 def emp_calc(input_str):
     prob_dict = {}
-    emp_dict = {}
 
     char_in_line = set(input_str)
 
@@ -8,6 +7,7 @@ def emp_calc(input_str):
         prob_dict[i] = input_str.count(i)
 
     emp_dict = {'A': 0, 'T': 0, 'G': 0, 'C': 0}
+
     for i in prob_dict.keys():
         emp_dict[i] = prob_dict[i] / sum(prob_dict.values())
 
