@@ -19,14 +19,12 @@ def emp_calc(input_str):
     return values
 
 
-def calculation_emp(start, rang=1):
-    with open("5_data_set.txt") as fh:
+def calculation_emp(training_set, start, rang=1):
         data = ""
-        for line in fh:
+        for line in training_set:
             data += line[start:start + rang].strip()
             # print(data)
-
-    return emp_calc(data)
+        return emp_calc(data)
 
 
 ls_m1 = [(0, 20), (20, 1), (21, 83)]
