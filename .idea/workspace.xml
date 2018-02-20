@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daffdb30-6ff2-4822-baf0-ea3ffa5a3ed8" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AGB_project.iml" afterPath="$PROJECT_DIR$/.idea/AGB_project.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +21,7 @@
       <file leaf-file-name="vitervi_alg.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vitervi_alg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="0">
               <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
               <folding />
             </state>
@@ -29,7 +31,7 @@
       <file leaf-file-name="IC.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IC.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="255">
               <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -41,7 +43,7 @@
       <file leaf-file-name="emp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-342">
+            <state relative-caret-position="525">
               <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
               <folding />
             </state>
@@ -58,25 +60,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Calculate_state_lenght.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Calculate_state_lenght.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state relative-caret-position="1155">
+              <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#2779#3228#0" expanded="false" />
-                <element signature="e#3250#3685#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="emp.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py">
+      <file leaf-file-name="binding_domain_probabilities.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/binding_domain_probabilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="174">
+              <caret line="79" column="29" lean-forward="false" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -91,6 +91,12 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TTTT</find>
+      <find>TTT</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -103,6 +109,8 @@
         <option value="$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py" />
         <option value="$PROJECT_DIR$/emp.py" />
         <option value="$PROJECT_DIR$/Calculate_state_lenght.py" />
+        <option value="$PROJECT_DIR$/binding_domain_probabilities" />
+        <option value="$PROJECT_DIR$/binding_domain_probabilities.py" />
       </list>
     </option>
   </component>
@@ -138,8 +146,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,7 +166,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Calculate_state_lenght">
+  <component name="RunManager" selected="Python.binding_domain_probabilities">
     <configuration name="Calculate_state_lenght" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -213,6 +221,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="binding_domain_probabilities" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="AGB_project" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/binding_domain_probabilities.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="emp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -249,17 +275,19 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.vitervi_alg" />
       <item index="1" class="java.lang.String" itemvalue="Python.IC" />
       <item index="2" class="java.lang.String" itemvalue="Python.emp" />
       <item index="3" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
+      <item index="4" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
-        <item index="1" class="java.lang.String" itemvalue="Python.emp" />
-        <item index="2" class="java.lang.String" itemvalue="Python.IC" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
+        <item index="2" class="java.lang.String" itemvalue="Python.emp" />
+        <item index="3" class="java.lang.String" itemvalue="Python.IC" />
       </list>
     </recent_temporary>
   </component>
@@ -337,16 +365,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <frame x="0" y="22" width="1280" height="720" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20422535" sideWeight="0.49455675" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20355412" sideWeight="0.49455675" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29082426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7340591" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1558966" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4696734" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19796558" sideWeight="0.5054432" order="2" side_tool="true" content_ui="tabs" />
@@ -396,7 +426,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -433,20 +463,11 @@
           <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="37" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2779#3228#0" expanded="false" />
-            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py" />
     <entry file="file://$PROJECT_DIR$/emp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -489,22 +510,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py" />
     <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2779#3228#0" expanded="false" />
-            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -543,22 +555,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py" />
     <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2779#3228#0" expanded="false" />
-            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,7 +748,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/IC.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="255">
           <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -753,13 +756,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python3/dist-packages/reportlab/pdfbase/pdfdoc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33048">
-          <caret line="1831" column="6" lean-forward="false" selection-start-line="1831" selection-start-column="6" selection-end-line="1831" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/python3/dist-packages/reportlab/pdfbase/pdfdoc.py" />
     <entry file="file://$PROJECT_DIR$/information content.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -767,20 +764,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vitervi_alg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="0">
           <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/emp.py" />
     <entry file="file://$PROJECT_DIR$/Evaluate_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -791,21 +781,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/emp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-342">
+        <state relative-caret-position="525">
           <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binding_domain_probabilities">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="67" column="51" lean-forward="true" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state relative-caret-position="1155">
+          <caret line="77" column="19" lean-forward="false" selection-start-line="77" selection-start-column="19" selection-end-line="77" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2779#3228#0" expanded="false" />
-            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tetra_prob.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="681" column="12" lean-forward="false" selection-start-line="681" selection-start-column="8" selection-end-line="681" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tri_prob.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="302" column="11" lean-forward="false" selection-start-line="302" selection-start-column="8" selection-end-line="302" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binding_domain_probabilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="79" column="29" lean-forward="false" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
