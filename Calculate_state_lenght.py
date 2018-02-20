@@ -26,13 +26,19 @@ def get_intervals_from_labels(labels):
 
     return interval_list
 
+def get_states(labels):
+
+    labels = tuple(['B'] + list(labels))
+    states_list = sorted(list(set(labels)), key=lambda x: labels.index(x))
+
+    return(states_list,labels)
 
 def get_trp_matrix(labels):
     """Función que genera la matriz de transiciones a partir de la secuencia de estados de
     un conjunto de entrenamiento """
 
-    labels = tuple(['B']+list(labels))
-    states_list = sorted(list(set(labels)),key=lambda x: labels.index(x))
+
+    (states_list,labels) = get_states(labels)
     trp_matrix = []
 
     index_dic = {}
@@ -92,7 +98,6 @@ def get_emp_matrix(mod,file):
     training_set = divide_set(file,0.33)[1]
 
     interval_list = get_intervals_from_labels(mod)
-    print(interval_list)
 
     emp_matrix = [[0, 0, 0, 0]]
 
@@ -101,9 +106,14 @@ def get_emp_matrix(mod,file):
 
     return emp_matrix
 
-def get_hmm():
+def get_hmm(labels,file):
 
+    hmm = {}
+    hmm["states"] = get_states(labels)[0]
+    hmm["emp"] = get_emp_matrix(labels,file)
+    hmm["trp"] = get_trp_matrix(labels)
 
+    return hmm
 
 mod1_label = (
     'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'D', 'I',
@@ -128,10 +138,6 @@ if __name__ == "__main__":
 
     labels = mod2_label
 
-    emp_matrix = get_emp_matrix(labels,"5_data_set.txt")
+    hmm = get_hmm(labels,"5_data_set.txt")
 
-    print(emp_matrix)
-
-    trp_matrix = get_trp_matrix(labels)
-
-    print(trp_matrix)
+    print(hmm)
