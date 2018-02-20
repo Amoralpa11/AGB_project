@@ -14,7 +14,7 @@ def get_most_probable_path(hmm, sequence):
 
     for state in hmm["states"]:
 
-        if state != "begin":
+        if state != "B":
             index_dic[state] = dic_counter
             dic_counter += 1
             hmm_states.append(state)

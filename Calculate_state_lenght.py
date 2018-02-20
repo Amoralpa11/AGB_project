@@ -3,6 +3,9 @@ import emp
 
 
 def get_intervals_from_labels(labels):
+    """ Función que genera los intervalos con estados diferentes a partir
+    de una lista con los estados de en un training set"""
+
     interval_list = []
     previous_state = ""
     interval = []
@@ -23,35 +26,94 @@ def get_intervals_from_labels(labels):
 
     return interval_list
 
+
+def get_trp_matrix(labels):
+    """Función que genera la matriz de transiciones a partir de la secuencia de estados de
+    un conjunto de entrenamiento """
+
+    labels = tuple(['B']+list(labels))
+    states_list = sorted(list(set(labels)),key=lambda x: labels.index(x))
+    trp_matrix = []
+
+    index_dic = {}
+
+    dic_counter = 0
+
+    for state in states_list:
+        index_dic[state] = dic_counter
+        dic_counter += 1
+        trp_matrix.append([])
+        for state2 in states_list:
+            trp_matrix[index_dic[state]].append(0)
+
+    for pos in range(len(labels)):
+        if pos != len(labels)-1:
+                trp_matrix[index_dic[labels[pos]]][index_dic[labels[pos+1]]] += 1
+
+    for state in range(len(trp_matrix)):
+        total = sum(trp_matrix[state])
+        for transition in range(len(trp_matrix[state])):
+            trp_matrix[state][transition] = trp_matrix[state][transition] / total
+
+    return trp_matrix
+
+
+
 # En primer lugar abrimos el archivo
 
+def divide_set(file,p):
 
-ff = open("5_data_set.txt")
+    ff = open(file)
 
-# Dividimos las lineas en dos subconjutnos, uno para
-# entrenamiento del modelo y otro para su evaluación
+    # Dividimos las lineas en dos subconjutnos, uno para
+    # entrenamiento del modelo y otro para su evaluación
 
-evaluation_set = []
-training_set = []
+    evaluation_set = []
+    training_set = []
 
-for line in ff:
-    random_number = random.randint(0, 1)
-    if random_number < 0.3:
-        evaluation_set.append(line)
-    else:
-        training_set.append(line)
+    for line in ff:
+        random_number = random.randint(0, 1)
+        if random_number < p:
+            evaluation_set.append(line)
+        else:
+            training_set.append(line)
+
+    return (evaluation_set,training_set)
 
 # Training the model with the training_set
 
 # To do this we need labeled data, It is easy for the
 # first two models
 
+# now we have to set the emission probabilities and the
+# transition probabilities using these labels
+def get_emp_matrix(mod,file):
+
+    training_set = divide_set(file,0.33)[1]
+
+    interval_list = get_intervals_from_labels(mod)
+    print(interval_list)
+
+    emp_matrix = [[0, 0, 0, 0]]
+
+    for interval in interval_list:
+        emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
+
+    return emp_matrix
+
+def get_hmm():
+
+
+
 mod1_label = (
-    'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'D', 'I', 'I',
+    'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'D', 'I',
     'I',
-    'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I',
-    'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
+    'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
+    'I',
+    'I',
+    'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
+    'I',
     'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I')
 
@@ -62,12 +124,14 @@ mod2_label = (
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I')
 
-# now we have to set the emission probabilities and the
-# transition probabilities using these labels
+if __name__ == "__main__":
 
-interval_list = get_intervals_from_labels(mod1_label)
+    labels = mod2_label
 
-emp_matrix = []
+    emp_matrix = get_emp_matrix(labels,"5_data_set.txt")
 
-for interval in interval_list:
-    emp_matrix.append(emp.calculation_emp(interval[0], interval[1]))
+    print(emp_matrix)
+
+    trp_matrix = get_trp_matrix(labels)
+
+    print(trp_matrix)
