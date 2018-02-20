@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daffdb30-6ff2-4822-baf0-ea3ffa5a3ed8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AGB_project.iml" afterPath="$PROJECT_DIR$/.idea/AGB_project.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Calculate_state_lenght.py" afterPath="$PROJECT_DIR$/Calculate_state_lenght.py" />
-      <change beforePath="$PROJECT_DIR$/emp.py" afterPath="$PROJECT_DIR$/emp.py" />
-      <change beforePath="$PROJECT_DIR$/vitervi_alg.py" afterPath="$PROJECT_DIR$/vitervi_alg.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,11 +62,11 @@
         <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="167">
-              <caret line="105" column="4" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
+              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#2783#3232#0" expanded="false" />
-                <element signature="e#3254#3689#0" expanded="false" />
+                <element signature="e#2779#3228#0" expanded="false" />
+                <element signature="e#3250#3685#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -331,7 +326,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518858963296</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="he modificado calculate_state_length.py para que obtenga el modelo de &#10;markov a partir de un conjunto de datos y las labels del set de entrenamiento">
+      <created>1519145795484</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1519145795484</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -344,7 +346,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29082426" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7340591" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4696734" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19796558" sideWeight="0.5054432" order="2" side_tool="true" content_ui="tabs" />
@@ -389,7 +391,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://github.com/Amoralpa11/AGB_project&#10;&#10;# Conflicts:&#10;#&#9;emp.py" />
     <MESSAGE value="He añadido dos scripts uno para evaluar los modelos, y otro para calcular&#10;la longitud de los estados variables. También he modificiado la función&#10;calculation emp para que trabaje con un array de strings en lugar de abrir &#10;todo el archivo. de esta manera calculará las probabilidades de emisión &#10;solo del training set" />
-    <option name="LAST_COMMIT_MESSAGE" value="He añadido dos scripts uno para evaluar los modelos, y otro para calcular&#10;la longitud de los estados variables. También he modificiado la función&#10;calculation emp para que trabaje con un array de strings en lugar de abrir &#10;todo el archivo. de esta manera calculará las probabilidades de emisión &#10;solo del training set" />
+    <MESSAGE value="he modificado calculate_state_length.py para que obtenga el modelo de &#10;markov a partir de un conjunto de datos y las labels del set de entrenamiento" />
+    <option name="LAST_COMMIT_MESSAGE" value="he modificado calculate_state_length.py para que obtenga el modelo de &#10;markov a partir de un conjunto de datos y las labels del set de entrenamiento" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -430,8 +433,8 @@
           <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="37" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2783#3232#0" expanded="false" />
-            <element signature="e#3254#3689#0" expanded="false" />
+            <element signature="e#2779#3228#0" expanded="false" />
+            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -500,8 +503,8 @@
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2783#3232#0" expanded="false" />
-            <element signature="e#3254#3689#0" expanded="false" />
+            <element signature="e#2779#3228#0" expanded="false" />
+            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,8 +557,8 @@
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2783#3232#0" expanded="false" />
-            <element signature="e#3254#3689#0" expanded="false" />
+            <element signature="e#2779#3228#0" expanded="false" />
+            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -797,11 +800,11 @@
     <entry file="file://$PROJECT_DIR$/Calculate_state_lenght.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
-          <caret line="105" column="4" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
+          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#2783#3232#0" expanded="false" />
-            <element signature="e#3254#3689#0" expanded="false" />
+            <element signature="e#2779#3228#0" expanded="false" />
+            <element signature="e#3250#3685#0" expanded="false" />
           </folding>
         </state>
       </provider>
