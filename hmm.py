@@ -136,7 +136,7 @@ mod2_label = (
 
 if __name__ == "__main__":
 
-    labels = mod2_label
+    labels = mod1_label
 
     hmm = get_hmm(labels,"5_data_set.txt")
 
