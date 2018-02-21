@@ -79,14 +79,14 @@ def get_most_probable_path(hmm, sequence):
             viterbi_matrix[pos_counter].append(max(vik, key=lambda x: x[1]))
         pos_counter += 1
 
-    for i in range(len(viterbi_matrix[0])):
-        for j in range(len(viterbi_matrix)):
-            if j == 0:
-                print("%10.4f\t" % viterbi_matrix[j][i], end="")
-            else:
-                print("%7s, %10.4f\t " % (viterbi_matrix[j][i][0], viterbi_matrix[j][i][1]), end="")
-
-        print("\n")
+    # for i in range(len(viterbi_matrix[0])):
+    #     for j in range(len(viterbi_matrix)):
+    #         if j == 0:
+    #             print("%10.4f\t" % viterbi_matrix[j][i], end="")
+    #         else:
+    #             print("%7s, %10.4f\t " % (viterbi_matrix[j][i][0], viterbi_matrix[j][i][1]), end="")
+    #
+    #     print("\n")
 
     states_path = []
     start = True
@@ -96,7 +96,7 @@ def get_most_probable_path(hmm, sequence):
             max_state = max(position, key=lambda x: x[1])
             state_index = position.index(max_state)
 
-            print("state_index = %s" % state_index)
+            # print("state_index = %s" % state_index)
 
             for state, index in index_dic.items():
                 if index == state_index+1:
@@ -116,17 +116,17 @@ def get_most_probable_path(hmm, sequence):
 
 
 
-    states_path_str = " , ".join(states_path[::-1])
+    states_path= tuple(states_path[::-1])
 
 
 
     # return viterbi_matrix
-    return states_path_str
+    return states_path
 
 seq = "ACCCGAGTAA"
 
 hmm = {
-    "states": ["begin", "exon", "donor", "intron"],
+    "states": ["B", "E", "D", "I"],
     "emp": [[0.00, 0.00, 0.00, 0.00],
             [0.25, 0.25, 0.25, 0.25],
             [0.05, 0.00, 0.95, 0.00],
@@ -137,7 +137,7 @@ hmm = {
             [0.0, 0.0, 0.0, 1.0]]
 }
 
-viterbi_path = get_most_probable_path(hmm, seq)
+# viterbi_path = get_most_probable_path(hmm, seq)
 
 # for i in range(len(viterbi_mat[0])):
 #     for j in range(len(viterbi_mat)):
@@ -148,4 +148,4 @@ viterbi_path = get_most_probable_path(hmm, seq)
 #
 #     print("\n")
 
-print(viterbi_path)
+# print(viterbi_path)
