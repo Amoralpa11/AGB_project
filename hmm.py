@@ -93,11 +93,9 @@ def divide_set(file,p):
 
 # now we have to set the emission probabilities and the
 # transition probabilities using these labels
-def get_emp_matrix(mod,file):
+def get_emp_matrix(training_set, labels):
 
-    training_set = divide_set(file,0.33)[1]
-
-    interval_list = get_intervals_from_labels(mod)
+    interval_list = get_intervals_from_labels(labels)
 
     emp_matrix = [[0, 0, 0, 0]]
 
@@ -106,11 +104,11 @@ def get_emp_matrix(mod,file):
 
     return emp_matrix
 
-def get_hmm(labels,file):
+def get_hmm(labels,training_set):
 
     hmm = {}
     hmm["states"] = get_states(labels)[0]
-    hmm["emp"] = get_emp_matrix(labels,file)
+    hmm["emp"] = get_emp_matrix(training_set, labels)
     hmm["trp"] = get_trp_matrix(labels)
 
     return hmm

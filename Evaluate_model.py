@@ -1,11 +1,15 @@
 import hmm as HMM
 import vitervi_alg
+import random as rand
+import pprint
+import time
+
 
 def evaluate_sequence(seq,labels,hmm):
 
     path = vitervi_alg.get_most_probable_path(hmm,seq)
 
-    print ("%s\n%s\n" %("".join(path),"".join(labels)))
+    # print ("%s\n%s\n" %("".join(path),"".join(labels)))
 
 
     if path == labels:
@@ -13,22 +17,70 @@ def evaluate_sequence(seq,labels,hmm):
     else:
         return 0
 
+def get_crossvalidation_sets(file,n):
+    data_set =[]
+    set = [[]]
+    set_counter = 0
 
-combos = ["A", "T", "G", "C"]
+    for line in file:
+        data_set.append(line)
+
+    rand.shuffle(data_set)
+
+    partition_len = int(len(data_set)/n)
+
+    for line in data_set:
+        line = line.strip()
+        set[set_counter].append(line)
+        if len(set[set_counter]) == partition_len:
+            set.append([])
+            set_counter +=1
+
+    for i in range(n):
+        testing_set = set[i]
+        training_set = []
+        for subset in range(n):
+            if subset != i:
+                training_set += set[subset]
+        yield(training_set, testing_set)
+
+
+def cross_validation(file, n, labels):
+
+    file  = open(file)
+    tpr = []
+    ciclo = 1
+    for training_set, testing_set in get_crossvalidation_sets(file,n):
+        print("empezamos con el ciclo %s" %ciclo)
+        ciclo += 1
+        hmm = HMM.get_hmm(labels, training_set)
+
+        print("El modelo de markov obtenido es:")
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint(hmm)
+
+        totals = len(testing_set)
+        tp_tmp = 0
+
+        for seq in testing_set:
+            seq = seq.rstrip()
+            tp_tmp += evaluate_sequence(seq, labels,hmm)
+
+        print("El ratio de positivos verdaderos es %.4f" %(tp_tmp/totals))
+
+        tpr.append(tp_tmp/totals)
+
+    return tpr
+
 
 if __name__ == "__main__":
 
-    labels = HMM.mod1_label
+    start_time = time.time()
+    labels = HMM.mod2_label
 
-    hmm = HMM.get_hmm(labels,"5_data_set.txt")
-    tp = 0
-    totals = 0
+    tpr = cross_validation("5_data_set.txt",7,labels)
 
-    with open("5_data_set.txt") as set:
+    print(tpr)
+    print("La media de tpr es: %s "%(sum(tpr)/len(tpr)))
 
-        for line in set:
-            line = line.strip()
-            tp += evaluate_sequence(line, labels,hmm)
-            totals +=1
-
-print(tp/totals)
+    print("La ejecución ha tardado: %s segundos" %(time.time()-start_time))
