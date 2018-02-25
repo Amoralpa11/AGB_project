@@ -5,30 +5,31 @@ import math
 
 intron = 'GTCTCAAGCAAATCCTTTTTTTTTTTTTTTTTTGAGACAGAGTCTTGCTCTGTCGCT'
 
-intron_emp = [0.23766333309000656,
-              0.22217541561563023,
-              0.252599202969668,
-              0.28756204832469523]
+def get_intron_labels(win_size,seq):
 
-tia_emp = [0.033,0.033,0.033,0.9]
+    intron_emp = [0.23766333309000656,
+                  0.22217541561563023,
+                  0.252599202969668,
+                  0.28756204832469523]
 
-nuc_dic = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
+    tia_emp = [0.033,0.033,0.033,0.9]
 
-
-def get_prob(seq, emp):
-    prob = 1
-    for nuc in seq:
-        prob *= emp[nuc_dic[nuc]]
-    return prob
+    nuc_dic = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
 
 
-for window_size in range(1,len(intron)):
+    def get_prob(seq, emp):
+        prob = 1
+        for nuc in seq:
+            prob *= emp[nuc_dic[nuc]]
+        return prob
+
     start = 0
-    end = window_size
+    end = win_size
     log_like_array = []
-    while end <= len(intron):
-        intron_prob = get_prob(intron[start:end], intron_emp)
-        tia_prob = get_prob(intron[start:end], tia_emp)
+    labels = []
+    while end <= len(seq):
+        intron_prob = get_prob(seq[start:end], intron_emp)
+        tia_prob = get_prob(seq[start:end], tia_emp)
         # log_like_array.append(math.log(tia_prob/intron_prob, 10))
         likelyhood = math.log(tia_prob/intron_prob, 10)
         for pos in range(start,end):
@@ -40,10 +41,17 @@ for window_size in range(1,len(intron)):
 
         start +=1
         end +=1
-    if max(log_like_array) >0:
+
+    for pos in range(len(seq)):
+        if log_like_array[pos] > 0:
+            labels.append('T')
+        else:
+            labels.append('i')
+
+    return labels
         # print("window size: %s" %window_size)
         # print(len(log_like_array))
-        print(log_like_array)
+
     # plt.plot(log_like_array)
     # plt.show()
 #

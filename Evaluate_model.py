@@ -45,7 +45,7 @@ def get_crossvalidation_sets(file,n):
         yield(training_set, testing_set)
 
 
-def cross_validation(file, n, labels):
+def cross_validation(file, n, labels,tia,rs):
 
     file  = open(file)
     tpr = []
@@ -53,7 +53,8 @@ def cross_validation(file, n, labels):
     for training_set, testing_set in get_crossvalidation_sets(file,n):
         print("empezamos con el ciclo %s" %ciclo)
         ciclo += 1
-        hmm = HMM.get_hmm(labels, training_set)
+        hmm = HMM.get_hmm(labels, training_set,tia,rs)
+
 
         print("El modelo de markov obtenido es:")
         pp = pprint.PrettyPrinter(indent=4)
@@ -78,7 +79,7 @@ if __name__ == "__main__":
     start_time = time.time()
     labels = HMM.mod2_label
 
-    tpr = cross_validation("5_data_set.txt",7,labels)
+    tpr = cross_validation("5_data_set.txt",7,labels,0,0)
 
     print(tpr)
     print("La media de tpr es: %s "%(sum(tpr)/len(tpr)))

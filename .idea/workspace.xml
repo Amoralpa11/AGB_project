@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="daffdb30-6ff2-4822-baf0-ea3ffa5a3ed8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Labelling Tia.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/get_island_length.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/script_detector_de_islas.R" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Evaluate_model.py" afterPath="$PROJECT_DIR$/Evaluate_model.py" />
+      <change beforePath="$PROJECT_DIR$/Labelling Tia.py" afterPath="$PROJECT_DIR$/labelling_tia.py" />
+      <change beforePath="$PROJECT_DIR$/get_island_length.py" afterPath="$PROJECT_DIR$/get_island_length.py" />
+      <change beforePath="$PROJECT_DIR$/hmm.py" afterPath="$PROJECT_DIR$/hmm.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,20 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vitervi_alg.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vitervi_alg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="IC.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IC.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="0">
               <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -50,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Evaluate_model.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Evaluate_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Evaluate_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -65,28 +58,40 @@
       <file leaf-file-name="hmm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hmm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            <state relative-caret-position="162">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Labelling Tia.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Labelling Tia.py">
+      <file leaf-file-name="labelling_tia.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/labelling_tia.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state relative-caret-position="864">
+              <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get_island_length.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="get_island_length.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get_island_length.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="468">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script_detector_de_islas.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script_detector_de_islas.R">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="775">
+              <caret line="102" column="54" lean-forward="true" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -145,10 +150,11 @@
         <option value="$PROJECT_DIR$/vitervi_alg.py" />
         <option value="$PROJECT_DIR$/5_data_set.txt" />
         <option value="$PROJECT_DIR$/mutual information.py" />
+        <option value="$PROJECT_DIR$/Labelling Tia.py" />
+        <option value="$PROJECT_DIR$/labelling_tia.py" />
+        <option value="$PROJECT_DIR$/get_island_length.py" />
         <option value="$PROJECT_DIR$/hmm.py" />
         <option value="$PROJECT_DIR$/Evaluate_model.py" />
-        <option value="$PROJECT_DIR$/Labelling Tia.py" />
-        <option value="$PROJECT_DIR$/get_island_length.py" />
       </list>
     </option>
   </component>
@@ -173,6 +179,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,8 +192,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -204,7 +210,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Labelling Tia">
+  <component name="RunManager" selected="Python.get_island_length">
     <configuration name="Calculate_state_lenght" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,7 +259,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="AGB_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Labelling Tia.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/labelling_tia.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -295,7 +301,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="emp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="get_island_length" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -307,7 +313,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="AGB_project" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/emp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_island_length.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -333,19 +339,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.vitervi_alg" />
-      <item index="1" class="java.lang.String" itemvalue="Python.emp" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
-      <item index="3" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Evaluate_model" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Labelling Tia" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
+      <item index="2" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Evaluate_model" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Labelling Tia" />
+      <item index="5" class="java.lang.String" itemvalue="Python.get_island_length" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Labelling Tia" />
+        <item index="0" class="java.lang.String" itemvalue="Python.get_island_length" />
         <item index="1" class="java.lang.String" itemvalue="Python.Evaluate_model" />
-        <item index="2" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
-        <item index="4" class="java.lang.String" itemvalue="Python.emp" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Labelling Tia" />
+        <item index="3" class="java.lang.String" itemvalue="Python.binding_domain_probabilities" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Calculate_state_lenght" />
       </list>
     </recent_temporary>
   </component>
@@ -433,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519224686598</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="labelling tia es el script que busca islas de un modelo de markov dentro de otro modelo. get_island etiquetará los intrones utilizando labelling tia para asi poder obtener la distribución de longitu, y probabilidades de transición.">
+      <created>1519577223959</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1519577223959</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -447,18 +460,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="377" y="45" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20422535" sideWeight="0.49455675" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20796813" sideWeight="0.49455675" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5816485" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7340591" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42923796" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960877" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19796558" sideWeight="0.5054432" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4696734" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19796558" sideWeight="0.5054432" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -502,7 +516,8 @@
     <MESSAGE value="He añadido dos scripts uno para evaluar los modelos, y otro para calcular&#10;la longitud de los estados variables. También he modificiado la función&#10;calculation emp para que trabaje con un array de strings en lugar de abrir &#10;todo el archivo. de esta manera calculará las probabilidades de emisión &#10;solo del training set" />
     <MESSAGE value="he modificado calculate_state_length.py para que obtenga el modelo de &#10;markov a partir de un conjunto de datos y las labels del set de entrenamiento" />
     <MESSAGE value="añadido función para evaluar una secuencia con un modelo y el path real.creado scritp para generar el gráfico de l ainformacción mutua" />
-    <option name="LAST_COMMIT_MESSAGE" value="añadido función para evaluar una secuencia con un modelo y el path real.creado scritp para generar el gráfico de l ainformacción mutua" />
+    <MESSAGE value="labelling tia es el script que busca islas de un modelo de markov dentro de otro modelo. get_island etiquetará los intrones utilizando labelling tia para asi poder obtener la distribución de longitu, y probabilidades de transición." />
+    <option name="LAST_COMMIT_MESSAGE" value="labelling tia es el script que busca islas de un modelo de markov dentro de otro modelo. get_island etiquetará los intrones utilizando labelling tia para asi poder obtener la distribución de longitu, y probabilidades de transición." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -525,29 +540,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vitervi_alg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="24" lean-forward="false" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IC.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/emp.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -853,7 +850,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/IC.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="0">
           <caret line="17" column="10" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -866,16 +863,6 @@
         <state relative-caret-position="432">
           <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Evaluate_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,27 +882,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hmm.py">
+    <entry file="file://$PROJECT_DIR$/script_detector_de_islas.R">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        <state relative-caret-position="775">
+          <caret line="102" column="54" lean-forward="true" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Labelling Tia.py">
+    <entry file="file://$USER_HOME$/Documentos/bioinfo/Segundo trimestre/AGB/AGB_project/labelling_tia.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state relative-caret-position="184">
+          <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/get_island_length.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="468">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/labelling_tia.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="28" lean-forward="false" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hmm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Evaluate_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

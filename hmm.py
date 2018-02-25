@@ -104,7 +104,10 @@ def get_emp_matrix(training_set, labels):
 
     return emp_matrix
 
-def get_hmm(labels,training_set):
+def get_hmm(labels,training_set,tia,rs):
+
+    if tia or rs:
+
 
     hmm = {}
     hmm["states"] = get_states(labels)[0]
