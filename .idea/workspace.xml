@@ -441,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519626326103</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="labelling tia es el script que busca islas de un modelo de markov dentro de otro modelo. get_island etiquetará los intrones utilizando labelling tia para asi poder obtener la distribución de longitu, y probabilidades de transición.">
+      <created>1519657910544</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1519657910544</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
