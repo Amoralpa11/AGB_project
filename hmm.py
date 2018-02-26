@@ -1,6 +1,6 @@
 import random
 import emp
-
+import labelling_tia
 
 def get_intervals_from_labels(labels):
     """ Función que genera los intervalos con estados diferentes a partir
@@ -26,19 +26,30 @@ def get_intervals_from_labels(labels):
 
     return interval_list
 
-def get_states(labels):
+def get_states(toy,tia,rs):
 
-    labels = tuple(['B'] + list(labels))
-    states_list = sorted(list(set(labels)), key=lambda x: labels.index(x))
+    states_list = ['B','E']
 
-    return(states_list,labels)
+    if toy:
+        states_list.append('D')
+    else:
+        states_list += ['D1', 'D2', 'D3', 'D4', 'D5', 'D6']
 
-def get_trp_matrix(labels):
+        states_list.append('I')
+    if rs:
+        states_list.append('R')
+    if tia:
+        states_list.append('T')
+
+    return (states_list)
+
+def get_trp_matrix(states_list,labels):
     """Función que genera la matriz de transiciones a partir de la secuencia de estados de
     un conjunto de entrenamiento """
 
+    if type(labels[0]) == type(str()):
+        labels  = [labels]
 
-    (states_list,labels) = get_states(labels)
     trp_matrix = []
 
     index_dic = {}
@@ -52,9 +63,12 @@ def get_trp_matrix(labels):
         for state2 in states_list:
             trp_matrix[index_dic[state]].append(0)
 
-    for pos in range(len(labels)):
-        if pos != len(labels)-1:
-                trp_matrix[index_dic[labels[pos]]][index_dic[labels[pos+1]]] += 1
+    for lab in labels:
+        lab = tuple(['B']+list(lab))
+        for pos in range(len(lab)):
+            if pos != len(lab)-1:
+                    trp_matrix[index_dic[lab[pos]]][index_dic[lab[pos+1]]] += 1
+
 
     for state in range(len(trp_matrix)):
         total = sum(trp_matrix[state])
@@ -93,7 +107,7 @@ def divide_set(file,p):
 
 # now we have to set the emission probabilities and the
 # transition probabilities using these labels
-def get_emp_matrix(training_set, labels):
+def get_emp_matrix(training_set, labels,rs,tia):
 
     interval_list = get_intervals_from_labels(labels)
 
@@ -102,17 +116,39 @@ def get_emp_matrix(training_set, labels):
     for interval in interval_list:
         emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
 
+    if rs:
+        emp_matrix.append([0.45, 0.033, 0.45, 0.033])
+
+    if tia:
+        emp_matrix.append([0.033, 0.033, 0.033, 0.9])
+
     return emp_matrix
 
-def get_hmm(labels,training_set,tia,rs):
+def transform_labels(labels, training_set, tia, rs,wint,winr):
+    labs = []
+    intervals = get_intervals_from_labels(labels)
+    if tia and not rs:
+        for seq in training_set:
+            labs.append(list(labels[:intervals[-1][0]]) + labelling_tia.get_seq_labels(wint,seq[intervals[-1][0]:],0,1))
+    elif rs and not tia:
+        for seq in training_set:
+            labs.append(labelling_tia.get_seq_labels(winr,seq[:intervals[0][1]],1,0)+list(labels[intervals[0][1]:]))
+    else:
+        for seq in training_set:
+            labs.append(labelling_tia.get_seq_labels(winr,seq[:intervals[0][1]],1,0)+list(labels[intervals[0][1]:intervals[-1][0]])+labelling_tia.get_seq_labels(wint,seq[intervals[-1][0]:],0,1))
 
+    return labs
+
+
+def get_hmm(labels,training_set,toy,tia,rs):
+    labels2 = labels
     if tia or rs:
-
+        labels2 = transform_labels(labels,training_set,tia,rs,18,14)
 
     hmm = {}
-    hmm["states"] = get_states(labels)[0]
-    hmm["emp"] = get_emp_matrix(training_set, labels)
-    hmm["trp"] = get_trp_matrix(labels)
+    hmm["states"] = get_states(toy,tia,rs)
+    hmm["emp"] = get_emp_matrix(training_set, labels,rs,tia)
+    hmm["trp"] = get_trp_matrix(hmm['states'],labels2)
 
     return hmm
 
