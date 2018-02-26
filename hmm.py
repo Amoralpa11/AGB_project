@@ -1,6 +1,6 @@
 import random
 import emp
-import labelling_tia
+import labelling_seq
 
 def get_intervals_from_labels(labels):
     """ Función que genera los intervalos con estados diferentes a partir
@@ -28,16 +28,24 @@ def get_intervals_from_labels(labels):
 
 def get_states(toy,tia,rs):
 
-    states_list = ['B','E']
+    states_list = ['B']
 
+    if(tia):
+        states_list +=['EA','EC','EG','ET']
+    else:
+        states_list.append('E')
     if toy:
         states_list.append('D')
     else:
-        states_list += ['D1', 'D2', 'D3', 'D4', 'D5', 'D6']
+        states_list += ['1', '2', '3', '4', '5', '6']
 
+    if (tia):
+        states_list += ['IA', 'IC', 'IG', 'IT']
+    else:
         states_list.append('I')
-    if rs:
-        states_list.append('R')
+
+    # if rs:
+    #     states_list.append('R')
     if tia:
         states_list.append('T')
 
@@ -111,13 +119,30 @@ def get_emp_matrix(training_set, labels,rs,tia):
 
     interval_list = get_intervals_from_labels(labels)
 
+    if tia:
+        interval_list = interval_list[1:]
+    if tia:
+        interval_list = interval_list[:-1]
+
     emp_matrix = [[0, 0, 0, 0]]
+
+    if tia:
+        emp_matrix +=[[1,0,0,0],
+                      [0,1,0,0],
+                      [0,0,1,0],
+                      [0,0,0,1]]
 
     for interval in interval_list:
         emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
 
-    if rs:
-        emp_matrix.append([0.45, 0.033, 0.45, 0.033])
+    if tia:
+        emp_matrix += [[1, 0, 0, 0],
+                       [0, 1, 0, 0],
+                       [0, 0, 1, 0],
+                       [0, 0, 0, 1]]
+
+    # if rs:
+    #     emp_matrix.append([0.45, 0.05, 0.45, 0.05])
 
     if tia:
         emp_matrix.append([0.033, 0.033, 0.033, 0.9])
@@ -129,13 +154,13 @@ def transform_labels(labels, training_set, tia, rs,wint,winr):
     intervals = get_intervals_from_labels(labels)
     if tia and not rs:
         for seq in training_set:
-            labs.append(list(labels[:intervals[-1][0]]) + labelling_tia.get_seq_labels(wint,seq[intervals[-1][0]:],0,1))
+            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
     elif rs and not tia:
         for seq in training_set:
-            labs.append(labelling_tia.get_seq_labels(winr,seq[:intervals[0][1]],1,0)+list(labels[intervals[0][1]:]))
+            labs.append(labelling_seq.get_seq_labels(winr, seq[:intervals[0][1]], 1, 0) + list(labels[intervals[0][1]:]))
     else:
         for seq in training_set:
-            labs.append(labelling_tia.get_seq_labels(winr,seq[:intervals[0][1]],1,0)+list(labels[intervals[0][1]:intervals[-1][0]])+labelling_tia.get_seq_labels(wint,seq[intervals[-1][0]:],0,1))
+            labs.append(["E"+nuc for nuc in seq[:intervals[0][1]]] + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
 
     return labs
 
@@ -143,7 +168,7 @@ def transform_labels(labels, training_set, tia, rs,wint,winr):
 def get_hmm(labels,training_set,toy,tia,rs):
     labels2 = labels
     if tia or rs:
-        labels2 = transform_labels(labels,training_set,tia,rs,18,14)
+        labels2 = transform_labels(labels,training_set,tia,rs,12,6)
 
     hmm = {}
     hmm["states"] = get_states(toy,tia,rs)
@@ -165,8 +190,8 @@ mod1_label = (
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I')
 
 mod2_label = (
-    'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'D1',
-    'D2', 'D3', 'D4', 'D5', 'D6', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
+    'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', '1',
+    '2', '3', '4', '5', '6', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I')

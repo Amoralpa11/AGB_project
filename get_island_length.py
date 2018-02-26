@@ -1,4 +1,4 @@
-import labelling_tia
+import labelling_seq
 import pprint
 
 with open('5_data_set.txt') as file:
@@ -6,7 +6,7 @@ with open('5_data_set.txt') as file:
     labels_list = []
     for seq in file:
         seq = seq[24:82]
-        labels = labelling_tia.get_intron_labels(7, seq)
+        labels = labelling_seq.get_seq_labels(7, seq, 0, 1)
         labels_list.append("".join(labels))
 
 island_length = 0
@@ -37,3 +37,15 @@ for i in range(len(dist_list)):
 print(dist_list)
 pp  = pprint.PrettyPrinter(indent=4)
 pp.pprint(length_dist)
+
+tia = 0
+notia = 0
+
+for path in labels_list:
+
+    if 'T' in path:
+        tia+=1
+    else:
+        notia += 1
+
+print (tia/notia)

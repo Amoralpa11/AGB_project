@@ -5,16 +5,17 @@ import pprint
 import time
 
 
-def evaluate_sequence(seq,labels,hmm):
+def evaluate_sequence(seq, labels, hmm):
 
     path = vitervi_alg.get_most_probable_path(hmm,seq)
 
     # print ("%s\n%s\n" %("".join(path),"".join(labels)))
 
 
-    if path == labels:
+    if path[20] == labels[20]:
         return 1
     else:
+        # print ("%s\n%s\n%s\n" %("".join(path),"".join(labels),seq))
         return 0
 
 def get_crossvalidation_sets(file,n):
