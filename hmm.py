@@ -157,13 +157,13 @@ def transform_labels(labels, training_set, tia, rs,wint,winr):
     intervals = get_intervals_from_labels(labels)
     if tia and not rs:
         for seq in training_set:
-            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
+            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_intron_labels(wint, seq[intervals[-1][0]:]))
     elif rs and not tia:
         for seq in training_set:
-            labs.append(labelling_seq.get_seq_labels(winr, seq[:intervals[0][1]], 1, 0) + list(labels[intervals[0][1]:]))
+            labs.append(labelling_seq.get_exon_labels(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:]))
     else:
         for seq in training_set:
-            labs.append(labelling_seq.get_seq_labels(winr, seq[:intervals[0][1]], 1, 0) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
+            labs.append(labelling_seq.get_exon_labels(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_intron_labels(wint, seq[intervals[-1][0]:]))
 
     return labs
 
