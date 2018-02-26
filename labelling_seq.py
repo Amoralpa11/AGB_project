@@ -14,27 +14,16 @@ def get_prob(seq, emp):
         prob *= emp[nuc_dic[nuc]]
     return prob
 
-def get_seq_labels(win_size, seq, rs, tia):
+def get_intron_labels(win_size, seq):
 
-    if tia:
+    seq_emp =[0.23766333309000656,
+              0.22217541561563023,
+              0.252599202969668,
+              0.28756204832469523]
+    island_emp = [0.033, 0.033, 0.033, 0.9]
+    island = 'T'
+    state = 'I'
 
-        seq_emp =[0.23766333309000656,
-                  0.22217541561563023,
-                  0.252599202969668,
-                  0.28756204832469523]
-        island_emp = [0.033, 0.033, 0.033, 0.9]
-        island = 'T'
-        state = 'I'
-
-    if rs:
-        seq_emp =[0.2800845661889351,
-                    0.2606119758223318,
-                    0.23485578157908255,
-                    0.22444767640965052]
-
-        island_emp = [0.45, 0.033, 0.45, 0.033]
-        island = 'R'
-        state='E'
 
     start = 0
     end = win_size
@@ -64,6 +53,49 @@ def get_seq_labels(win_size, seq, rs, tia):
 
 
     return labels
+
+
+def get_exon_labels(win_size, seq):
+
+    seq_emp = [[][][][],
+               [][][][],
+               [][][][],
+               [][][][]]
+
+    island_emp = [[][][][],
+                   [][][][],
+                   [][][][],
+                   [][][][]]
+    island = 'R'
+    state = 'E'
+
+    start = 0
+    end = win_size
+    log_like_array = []
+    labels = []
+    while end <= len(seq):
+        seq_prob = get_prob(seq[start:end], seq_emp)
+        island_prob = get_prob(seq[start:end], island_emp)
+        # log_like_array.append(math.log(island_prob/seq_prob, 10))
+        likelyhood = math.log(island_prob / seq_prob, 10)
+        for pos in range(start, end):
+            if pos > len(log_like_array) - 1:
+                log_like_array.append([])
+
+            log_like_array[pos].append(likelyhood)
+
+        start += 1
+        end += 1
+
+    for pos in range(len(seq)):
+        likelyhood = sum(log_like_array[pos]) / len(log_like_array[pos])
+        if likelyhood > 0:
+            labels.append(island + seq[pos])
+        else:
+            labels.append(state + seq[pos])
+
+    return labels
+
 
 
 def update_path(prev_path, islands,island):

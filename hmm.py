@@ -30,7 +30,7 @@ def get_states(toy,tia,rs):
 
     states_list = ['B']
 
-    if(tia):
+    if(rs):
         states_list +=['EA','EC','EG','ET']
     else:
         states_list.append('E')
@@ -44,8 +44,8 @@ def get_states(toy,tia,rs):
     else:
         states_list.append('I')
 
-    # if rs:
-    #     states_list.append('R')
+    if rs:
+        states_list += ['RA', 'RC', 'RG', 'RT']
     if tia:
         states_list.append('T')
 
@@ -119,7 +119,7 @@ def get_emp_matrix(training_set, labels,rs,tia):
 
     interval_list = get_intervals_from_labels(labels)
 
-    if tia:
+    if rs:
         interval_list = interval_list[1:]
     if tia:
         interval_list = interval_list[:-1]
@@ -127,10 +127,10 @@ def get_emp_matrix(training_set, labels,rs,tia):
     emp_matrix = [[0, 0, 0, 0]]
 
     if tia:
-        emp_matrix +=[[1,0,0,0],
-                      [0,1,0,0],
-                      [0,0,1,0],
-                      [0,0,0,1]]
+        emp_matrix +=[[1, 0, 0, 0],
+                      [0, 1, 0, 0],
+                      [0, 0, 1, 0],
+                      [0, 0, 0, 1]]
 
     for interval in interval_list:
         emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
@@ -141,8 +141,11 @@ def get_emp_matrix(training_set, labels,rs,tia):
                        [0, 0, 1, 0],
                        [0, 0, 0, 1]]
 
-    # if rs:
-    #     emp_matrix.append([0.45, 0.05, 0.45, 0.05])
+    if rs:
+        emp_matrix += [[1, 0, 0, 0],
+                       [0, 1, 0, 0],
+                       [0, 0, 1, 0],
+                       [0, 0, 0, 1]]
 
     if tia:
         emp_matrix.append([0.033, 0.033, 0.033, 0.9])
@@ -160,7 +163,7 @@ def transform_labels(labels, training_set, tia, rs,wint,winr):
             labs.append(labelling_seq.get_seq_labels(winr, seq[:intervals[0][1]], 1, 0) + list(labels[intervals[0][1]:]))
     else:
         for seq in training_set:
-            labs.append(["E"+nuc for nuc in seq[:intervals[0][1]]] + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
+            labs.append(labelling_seq.get_seq_labels(winr, seq[:intervals[0][1]], 1, 0) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_seq_labels(wint, seq[intervals[-1][0]:], 0, 1))
 
     return labs
 
