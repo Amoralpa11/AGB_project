@@ -140,14 +140,14 @@ def get_emp_matrix(training_set, labels,options):
 
     interval_list = get_intervals_from_labels(labels)
 
-    if ese == 'complex':
+    if ese == 'complex' or exon == 'complex':
         interval_list = interval_list[1:]
-    if ise == 'complex':
+    if ise == 'complex' or intron == 'complex':
         interval_list = interval_list[:-1]
 
     emp_matrix = [[0, 0, 0, 0]]
 
-    if ese == 'complex':
+    if exon == 'complex':
         emp_matrix +=[[1, 0, 0, 0],
                       [0, 1, 0, 0],
                       [0, 0, 1, 0],
@@ -156,7 +156,7 @@ def get_emp_matrix(training_set, labels,options):
     for interval in interval_list:
         emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
 
-    if ise == 'complex':
+    if intron == 'complex':
         emp_matrix += [[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 1, 0],
