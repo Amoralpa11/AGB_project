@@ -255,9 +255,9 @@ def get_seq_labels2(seq, rs, tia):
 
 
 if __name__ == '__main__':
-    path2 = get_seq_labels2(intron, 0, 1)
-    path = get_intron_labels(1, intron, 0, 1)
+    loglikelyhood_array = []
+    for winsize in range(1,len(intron)):
+        loglikelyhood_array.append(get_intron_labels_from_emp(winsize, intron))
+    print(loglikelyhood_array)
 
-    print(''.join(path))
-    print(''.join(path2))
-    print(intron)
+

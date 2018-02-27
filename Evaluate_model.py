@@ -1,8 +1,6 @@
 import hmm as HMM
 import vitervi_alg
 import random as rand
-import pprint
-import time
 import argparse
 import sys
 import math
@@ -123,7 +121,7 @@ def cross_validation(file, n, labels, toy, tia, rs, out):
 
         accuracy.append([tpr,ppv,fdr])
 
-    # print_accuracy_to_file(toy, tia, rs, accuracy)
+    print_accuracy_to_file(toy, tia, rs, accuracy)
 
     mean_tpr = sum([x[0] for x in accuracy])/len(accuracy)
     mean_ppv = sum([x[1] for x in accuracy])/len(accuracy)
