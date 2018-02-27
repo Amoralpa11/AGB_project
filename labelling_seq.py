@@ -16,8 +16,10 @@ def get_prob(seq, emp):
     return prob
 
 
-def get_intron_labels_from_emp(win_size, seq):
+def get_intron_labels_from_emp(win_size, seq, options):
 
+    intron = options.intron
+    
 
     seq_emp = [0.23766333309000656,
                0.22217541561563023,
@@ -55,7 +57,7 @@ def get_intron_labels_from_emp(win_size, seq):
     return labels
 
 
-def get_exon_labels_from_emp(win_size, seq):
+def get_exon_labels_from_emp(win_size, seq,options):
 
     seq_emp = [0.2803125160528073,
                0.2607403982808514,

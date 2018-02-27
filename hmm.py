@@ -155,30 +155,41 @@ def get_emp_matrix(training_set, labels,rs,tia):
 
     return emp_matrix
 
-def transform_labels(labels, training_set, tia, rs,wint,winr):
+
+def transform_labels(labels, training_set,options,wint,winr):
     labs = []
     intervals = get_intervals_from_labels(labels)
+
+    tia = options.ise
+    rs = options.ese
+
     if tia and not rs:
         for seq in training_set:
-            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:]))
+            labs.append(list(labels[:intervals[-1][0]]) +
+                        labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:],options))
+
     elif rs and not tia:
         for seq in training_set:
-            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:]))
+            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]],options) +
+                        list(labels[intervals[0][1]:],options))
+
     else:
         for seq in training_set:
-            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:]))
+            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]],options) +
+                        list(labels[intervals[0][1]:intervals[-1][0]]) +
+                        labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:],options))
 
     return labs
 
 
-def get_hmm(labels,training_set,toy,tia,rs):
+def get_hmm(labels,training_set,options):
     labels2 = labels
-    if tia or rs:
-        labels2 = transform_labels(labels,training_set,tia,rs,12,6)
+    if 'complex' in [options.ise,options.ese,options.exon,options.intron]:
+        labels2 = transform_labels(labels,training_set,options,12,6)
 
     hmm = {}
-    hmm["states"] = get_states(toy,tia,rs)
-    hmm["emp"] = get_emp_matrix(training_set, labels,rs,tia)
+    hmm["states"] = get_states(options)
+    hmm["emp"] = get_emp_matrix(training_set, labels,options)
     hmm["trp"] = get_trp_matrix(hmm['states'],labels2)
 
     return hmm

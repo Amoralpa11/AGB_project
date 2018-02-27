@@ -61,17 +61,17 @@ def select_avarage_hmm(hmm_array, accuracy, mean_tpr):
     return hmm_array[index]
 
 
-def print_accuracy_to_file(toy, tia, rs, accuracy):
+def print_accuracy_to_file(options, accuracy):
 
     model = ""
 
-    if toy:
+    if options.toy:
         model += "toy"
     else:
         model += "D6"
-    if tia:
+    if options.ise:
         model += "_tia"
-    if rs:
+    if options.ese:
         model += "_rs"
     with open('accuracy_measures.txt','a') as am:
         for iteration in range(len(accuracy)):
@@ -84,16 +84,16 @@ def print_accuracy_to_file(toy, tia, rs, accuracy):
 
 
 
-def cross_validation(file, n, labels, toy, tia, rs, out):
-    file = open(file)
+def cross_validation(file, n, labels, toy, tia, rs, out,options):
+    file = open(options.infile)
     accuracy = []
     ciclo = 1
     hmm_array = []
-    for training_set, testing_set in get_crossvalidation_sets(file, n):
+    for training_set, testing_set in get_crossvalidation_sets(file, options.n):
         out.write("Starting the cycle %s\n" % ciclo)
         ciclo += 1
 
-        hmm = HMM.get_hmm(labels, training_set, toy, tia, rs)
+        hmm = HMM.get_hmm(labels, training_set, options)
         hmm_array.append(hmm)
 
         out.write("The obtained hidden Markov model is:\n\n")
@@ -121,7 +121,7 @@ def cross_validation(file, n, labels, toy, tia, rs, out):
 
         accuracy.append([tpr,ppv,fdr])
 
-    print_accuracy_to_file(toy, tia, rs, accuracy)
+    print_accuracy_to_file(options, accuracy)
 
     mean_tpr = sum([x[0] for x in accuracy])/len(accuracy)
     mean_ppv = sum([x[1] for x in accuracy])/len(accuracy)
@@ -187,17 +187,32 @@ if __name__ == "__main__":
                         action="store_true",
                         help = "If set, there will only be considerated one position (G) of the donor splice site")
 
+    parser.add_argument("-ex","--exon",
+                        dest="exon",
+                        action="store",
+                        default='simple',
+                        choices=['simple','complex'],
+                        help = "This options takes one of two values, if set to simple a simple state will be included to model the exon, if set to complex a markov chain will be used")
+
+    parser.add_argument("-in","--intron",
+                        dest="intron",
+                        action="store",
+                        default='simple',
+                        choices=['simple','complex'],
+                        help = "This options takes one of two values, if set to simple a simple state will be included to model the intron, if set to complex a markov chain will be used")
+
     parser.add_argument("-I","--ise",
                         dest="ise",
-                        action="store_true",
-                        help = "If set, the model will include an state to model a T-rich protein binding sequence in "
-                               "the intron")
+                        action="store",
+                        choices=['simple','complex'],
+                        help = "This options takes one of two values, if set to simple a simple state will be included to model the ise islands, if set to complex a markov chain will be used")
 
     parser.add_argument("-e","--ese",
                         dest="ese",
-                        action="store_true",
-                        help = "If set, the model will include an state to model a AG-rich protein binding sequence "
-                               "in the exon")
+                        action="store",
+                        choices=['simple','complex'],
+                        help = "This options takes one of two values, if set to simple a simple state will be included to model the ese islands, if set to complex a markov chain will be used")
+
     parser.add_argument("-s","--save_model",
                         dest="save_model",
                         action="store",
@@ -218,7 +233,7 @@ if __name__ == "__main__":
 
     out = options.outfile
 
-    hmm = cross_validation(file, n, labels, toy, ise, ese, out)
+    hmm = cross_validation(file, n, labels, toy, ise, ese, out,options)
 
     if options.save_model:
        with open(options.save_model,"wb") as  p_hmm:
