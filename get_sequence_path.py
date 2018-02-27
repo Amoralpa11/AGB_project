@@ -23,10 +23,22 @@ if __name__ == '__main__':
 
     options = parser.parse_args()
 
+    seq = [options.seq]
+
+    if os.path.isfile(seq[0]):
+        with open(seq[0]) as file:
+            seq = []
+            for line in file:
+                line = line.rstrip()
+                seq.append(line)
+
+
     pickle_file = "model%s.p" %options.model
 
     hmm = pickle.load(open(pickle_file,'rb'))
 
-    path = vitervi_alg.get_most_probable_path(hmm,options.seq)
+    for sequence in seq:
 
-    print("%s\n%s" % (options.seq,"".join(path)))
+        path = vitervi_alg.get_most_probable_path(hmm,seq)
+
+        print("%s\n%s" % (seq,"".join(path)))
