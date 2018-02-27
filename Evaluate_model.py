@@ -5,6 +5,8 @@ import pprint
 import time
 import argparse
 import sys
+import math
+import pickle
 
 
 def evaluate_sequence(seq, labels, hmm):
@@ -52,21 +54,52 @@ def get_crossvalidation_sets(file, n):
         yield (training_set, testing_set)
 
 
+def select_avarage_hmm(hmm_array, accuracy, mean_tpr):
+
+    sorted_cycle = sorted(accuracy,key= lambda x: math.pow((x[0]-mean_tpr),2))
+
+    index = accuracy.index(sorted_cycle[0])
+
+    return hmm_array[index]
+
+
+def print_accuracy_to_file(toy, tia, rs, accuracy):
+
+    model = ""
+
+    if toy:
+        model += "toy"
+    else:
+        model += "D6"
+    if tia:
+        model += "_tia"
+    if rs:
+        model += "_rs"
+    with open('accuracy_measures.txt','a') as am:
+        for iteration in range(len(accuracy)):
+            tpr = accuracy[iteration][0]
+            ppv = accuracy[iteration][1]
+            fdr = accuracy[iteration][2]
+
+            am.write("%s\t%s\t%s\t%s\t%s\n" %(model,iteration,tpr,ppv,fdr))
+
+
+
+
 def cross_validation(file, n, labels, toy, tia, rs, out):
     file = open(file)
-    tpr = []
+    accuracy = []
     ciclo = 1
+    hmm_array = []
     for training_set, testing_set in get_crossvalidation_sets(file, n):
         out.write("Starting the cycle %s\n" % ciclo)
         ciclo += 1
 
         hmm = HMM.get_hmm(labels, training_set, toy, tia, rs)
+        hmm_array.append(hmm)
 
         out.write("The obtained hidden Markov model is:\n\n")
         print_hmm(hmm, out)
-
-        totals = len(testing_set)
-        tp_tmp = 0
 
         tp = 0
         fp = 0
@@ -79,12 +112,30 @@ def cross_validation(file, n, labels, toy, tia, rs, out):
             fp += result[1]
             fn += result[2]
 
+        tpr = tp / (tp + fn + fp)
+        ppv = tp / (fp + tp)
+        fdr = fp / (fp + tp)
 
-        out.write("The true positive rate is: %.3f" % (tp_tmp / totals))
 
-        tpr.append(tp_tmp / totals)
+        out.write("\nThe true positive rate is: %.3f\n" % (tpr))
+        out.write("The positive predicted value is: %.3f\n" % (ppv))
+        out.write("The false discovery rate is: %.3f\n\n" % (fdr))
 
-    return tpr
+        accuracy.append([tpr,ppv,fdr])
+
+    # print_accuracy_to_file(toy, tia, rs, accuracy)
+
+    mean_tpr = sum([x[0] for x in accuracy])/len(accuracy)
+    mean_ppv = sum([x[1] for x in accuracy])/len(accuracy)
+    mean_fdr = sum([x[2] for x in accuracy])/len(accuracy)
+
+    out.write("The mean true positive rate is: %.3f\n" % (mean_tpr))
+    out.write("The mean positive predicted value is: %.3f\n" % (mean_ppv))
+    out.write("The mean false discovery rate is: %.3f\n\n" % (mean_fdr))
+
+    avarage_hmm = select_avarage_hmm(hmm_array,accuracy,mean_tpr)
+
+    return avarage_hmm
 
 def print_hmm(hmm, out):
     states = ", ".join(hmm['states'])
@@ -149,6 +200,10 @@ if __name__ == "__main__":
                         action="store_true",
                         help = "If set, the model will include an state to model a AG-rich protein binding sequence "
                                "in the exon")
+    parser.add_argument("-s","--save_model",
+                        dest="save_model",
+                        action="store",
+                        help = "If set, the model with the closest TPR to the mean will be saved as a pickle file")
 
     options = parser.parse_args()
 
@@ -165,8 +220,11 @@ if __name__ == "__main__":
 
     out = options.outfile
 
-    tpr = cross_validation(file, n, labels, toy, ise, ese, out)
+    hmm = cross_validation(file, n, labels, toy, ise, ese, out)
 
-    out.write("La media de tpr es: %s " % (sum(tpr) / len(tpr)))
+    if options.save_model:
+       with open(options.save_model,"wb") as  p_hmm:
+            pickle.dump(hmm,p_hmm)
+
 
 
