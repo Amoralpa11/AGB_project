@@ -4,7 +4,7 @@ import math
 # import matplotlib.pyplot as plt
 
 
-intron = 'GTCTCAAGCAAATCCTTTTTTTTTTTTTTTTTTGAGACAGAGTCTTGCTCTGTCGCT'
+seq = 'GTCTCAAGCAAATCCTTTTTTTTTTTTTTTTTTGAGACAGAGTCTTGCTCTGTCGCT'
 
 nuc_dic = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
 
@@ -19,7 +19,7 @@ def get_prob(seq, emp):
 def get_intron_labels_from_emp(win_size, seq, options):
 
     intron = options.intron
-    
+    ise = options.ise
 
     seq_emp = [0.23766333309000656,
                0.22217541561563023,
@@ -50,14 +50,23 @@ def get_intron_labels_from_emp(win_size, seq, options):
     for pos in range(len(seq)):
         likelyhood = sum(log_like_array[pos]) / len(log_like_array[pos])
         if likelyhood > 0:
-            labels.append(island+ seq[pos])
+            if ise == 'simple':
+                labels.append(island)
+            elif ise == 'complex':
+                labels.append(island + seq[pos])
         else:
-            labels.append(state + seq[pos])
+            if intron == 'simple':
+                labels.append(state)
+            elif intron == 'complex':
+                labels.append(state + seq[pos])
 
     return labels
 
 
 def get_exon_labels_from_emp(win_size, seq,options):
+
+    exon = options.exon
+    ese = options.ese
 
     seq_emp = [0.2803125160528073,
                0.2607403982808514,
@@ -88,9 +97,15 @@ def get_exon_labels_from_emp(win_size, seq,options):
     for pos in range(len(seq)):
         likelyhood = sum(log_like_array[pos]) / len(log_like_array[pos])
         if likelyhood > 0:
-            labels.append(island + seq[pos])
+            if ese == 'simple':
+                labels.append(island)
+            elif ese == 'complex':
+                labels.append(island + seq[pos])
         else:
-            labels.append(state + seq[pos])
+            if exon == 'simple':
+                labels.append(state)
+            elif exon == 'complex':
+                labels.append(state + seq[pos])
 
     return labels
 

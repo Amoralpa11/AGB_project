@@ -69,10 +69,23 @@ def print_accuracy_to_file(options, accuracy):
         model += "toy"
     else:
         model += "D6"
-    if options.ise:
+
+    if options.exon == 'complex':
+        model += "_eC"
+
+    if options.intron == 'complex':
+        model += "_iC"
+
+    if options.ise == 'simple':
         model += "_tia"
-    if options.ese:
+    elif options.ise == 'complex':
+        model += "_tiaC"
+
+    if options.ese == 'complex':
         model += "_rs"
+    elif options.ese == 'complex':
+        model += "_rsC"
+
     with open('accuracy_measures.txt','a') as am:
         for iteration in range(len(accuracy)):
             tpr = accuracy[iteration][0]
@@ -204,13 +217,15 @@ if __name__ == "__main__":
     parser.add_argument("-I","--ise",
                         dest="ise",
                         action="store",
-                        choices=['simple','complex'],
+                        default=None,
+                        choices=[None,'simple','complex'],
                         help = "This options takes one of two values, if set to simple a simple state will be included to model the ise islands, if set to complex a markov chain will be used")
 
     parser.add_argument("-e","--ese",
                         dest="ese",
                         action="store",
-                        choices=['simple','complex'],
+                        default= None,
+                        choices=[None,'simple','complex'],
                         help = "This options takes one of two values, if set to simple a simple state will be included to model the ese islands, if set to complex a markov chain will be used")
 
     parser.add_argument("-s","--save_model",

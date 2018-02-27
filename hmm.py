@@ -26,28 +26,41 @@ def get_intervals_from_labels(labels):
 
     return interval_list
 
-def get_states(toy,tia,rs):
+def get_states(options):
+
+    toy = options.toy
+    ise = options.ise
+    ese = options.ese
+    intron = options.intron
+    exon = options.exon
 
     states_list = ['B']
 
-    if(rs):
+    if exon == 'complex':
         states_list +=['EA','EC','EG','ET']
     else:
         states_list.append('E')
+
     if toy:
         states_list.append('D')
     else:
         states_list += ['1', '2', '3', '4', '5', '6']
 
-    if (tia):
+    if intron == 'complex':
         states_list += ['IA', 'IC', 'IG', 'IT']
     else:
         states_list.append('I')
 
-    if rs:
+    if ese == 'complex':
         states_list += ['RA', 'RC', 'RG', 'RT']
-    if tia:
+
+    elif ese == 'simple':
+        states_list.append('R')
+
+    if ise == 'complex':
         states_list += ['TA', 'TC', 'TG', 'TT']
+    elif ise == 'simple':
+        states_list.append('T')
 
     return (states_list)
 
@@ -115,18 +128,26 @@ def divide_set(file,p):
 
 # now we have to set the emission probabilities and the
 # transition probabilities using these labels
-def get_emp_matrix(training_set, labels,rs,tia):
+
+
+def get_emp_matrix(training_set, labels,options):
+
+    toy = options.toy
+    ise = options.ise
+    ese = options.ese
+    intron = options.intron
+    exon = options.exon
 
     interval_list = get_intervals_from_labels(labels)
 
-    if rs:
+    if ese == 'complex':
         interval_list = interval_list[1:]
-    if tia:
+    if ise == 'complex':
         interval_list = interval_list[:-1]
 
     emp_matrix = [[0, 0, 0, 0]]
 
-    if rs:
+    if ese == 'complex':
         emp_matrix +=[[1, 0, 0, 0],
                       [0, 1, 0, 0],
                       [0, 0, 1, 0],
@@ -135,23 +156,27 @@ def get_emp_matrix(training_set, labels,rs,tia):
     for interval in interval_list:
         emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
 
-    if tia:
+    if ise == 'complex':
         emp_matrix += [[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 1, 0],
                        [0, 0, 0, 1]]
 
-    if rs:
+    if ese == 'complex':
         emp_matrix += [[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 1, 0],
                        [0, 0, 0, 1]]
+    elif ese == 'simple':
+        emp_matrix.append([0.45,0.05,0.45,0.05])
 
-    if tia:
+    if ise == 'complex':
         emp_matrix += [[1, 0, 0, 0],
                        [0, 1, 0, 0],
                        [0, 0, 1, 0],
                        [0, 0, 0, 1]]
+    elif ise =='simple':
+        emp_matrix.append([0.033,0.033,0.033,0.9])
 
     return emp_matrix
 
@@ -171,7 +196,7 @@ def transform_labels(labels, training_set,options,wint,winr):
     elif rs and not tia:
         for seq in training_set:
             labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]],options) +
-                        list(labels[intervals[0][1]:],options))
+                        list(labels[intervals[0][1]:]))
 
     else:
         for seq in training_set:
@@ -184,7 +209,7 @@ def transform_labels(labels, training_set,options,wint,winr):
 
 def get_hmm(labels,training_set,options):
     labels2 = labels
-    if 'complex' in [options.ise,options.ese,options.exon,options.intron]:
+    if options.ise or options.ese:
         labels2 = transform_labels(labels,training_set,options,12,6)
 
     hmm = {}
