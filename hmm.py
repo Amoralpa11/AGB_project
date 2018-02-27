@@ -47,7 +47,7 @@ def get_states(toy,tia,rs):
     if rs:
         states_list += ['RA', 'RC', 'RG', 'RT']
     if tia:
-        states_list.append('T')
+        states_list += ['TA', 'TC', 'TG', 'TT']
 
     return (states_list)
 
@@ -126,7 +126,7 @@ def get_emp_matrix(training_set, labels,rs,tia):
 
     emp_matrix = [[0, 0, 0, 0]]
 
-    if tia:
+    if rs:
         emp_matrix +=[[1, 0, 0, 0],
                       [0, 1, 0, 0],
                       [0, 0, 1, 0],
@@ -148,7 +148,10 @@ def get_emp_matrix(training_set, labels,rs,tia):
                        [0, 0, 0, 1]]
 
     if tia:
-        emp_matrix.append([0.033, 0.033, 0.033, 0.9])
+        emp_matrix += [[1, 0, 0, 0],
+                       [0, 1, 0, 0],
+                       [0, 0, 1, 0],
+                       [0, 0, 0, 1]]
 
     return emp_matrix
 
@@ -157,13 +160,13 @@ def transform_labels(labels, training_set, tia, rs,wint,winr):
     intervals = get_intervals_from_labels(labels)
     if tia and not rs:
         for seq in training_set:
-            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_intron_labels(wint, seq[intervals[-1][0]:]))
+            labs.append(list(labels[:intervals[-1][0]]) + labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:]))
     elif rs and not tia:
         for seq in training_set:
-            labs.append(labelling_seq.get_exon_labels(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:]))
+            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:]))
     else:
         for seq in training_set:
-            labs.append(labelling_seq.get_exon_labels(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_intron_labels(wint, seq[intervals[-1][0]:]))
+            labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]]) + list(labels[intervals[0][1]:intervals[-1][0]]) + labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:]))
 
     return labs
 
@@ -198,11 +201,3 @@ mod2_label = (
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'I',
     'I', 'I', 'I', 'I', 'I', 'I', 'I')
-
-if __name__ == "__main__":
-
-    labels = mod1_label
-
-    hmm = get_hmm(labels,"5_data_set.txt")
-
-    print(hmm)
