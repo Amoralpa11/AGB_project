@@ -54,6 +54,8 @@ def get_intron_labels_from_emp(win_size, seq, options):
                 labels.append(island)
             elif ise == 'complex':
                 labels.append(island + seq[pos])
+            elif intron == 'complex':
+                labels.append(state + seq[pos])
         else:
             if intron == 'simple':
                 labels.append(state)
@@ -101,6 +103,8 @@ def get_exon_labels_from_emp(win_size, seq,options):
                 labels.append(island)
             elif ese == 'complex':
                 labels.append(island + seq[pos])
+            elif exon == 'complex':
+                labels.append(state + seq[pos])
         else:
             if exon == 'simple':
                 labels.append(state)
@@ -273,8 +277,8 @@ def get_seq_labels2(seq, rs, tia):
 
 if __name__ == '__main__':
     loglikelyhood_array = []
-    for winsize in range(1,len(intron)):
-        loglikelyhood_array.append(get_intron_labels_from_emp(winsize, intron))
+    for winsize in range(1,len(seq)):
+        loglikelyhood_array.append(get_intron_labels_from_emp(winsize, seq))
     print(loglikelyhood_array)
 
 

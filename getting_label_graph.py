@@ -32,6 +32,7 @@ def get_intron_labels_from_emp(win_size, seq):
         island_prob = get_prob(seq[start:end], island_emp)
         # log_like_array.append(math.log(island_prob/seq_prob, 10))
         likelyhood = math.log(island_prob / seq_prob, 10)
+        print("%.2f"%likelyhood)
         for pos in range(start, end):
             if pos > len(log_like_array) - 1:
                 log_like_array.append([])
@@ -48,10 +49,13 @@ def get_intron_labels_from_emp(win_size, seq):
 
 
 
-loglikelyhood_array = []
-file = open("likelihood_labelling.txt",'w')
-for winsize in range(1,len(intron)):
-    array = (get_intron_labels_from_emp(winsize, intron))
-    array_str = "\t".join([str(x) for x in array])
-    file.write("%s\n" % array_str)
+# loglikelyhood_array = []
+# file = open("likelihood_labelling.txt",'w')
+# for winsize in range(1,len(intron)):
+#     array = (get_intron_labels_from_emp(winsize, intron))
+#     array_str = "\t".join([str(x) for x in array])
+#     file.write("%s\n" % array_str)
 
+array = (get_intron_labels_from_emp(7, intron))
+for i in array:
+    print("%.2f\t"%i,end="")

@@ -130,53 +130,33 @@ def divide_set(file,p):
 # transition probabilities using these labels
 
 
-def get_emp_matrix(training_set, labels,options):
+def get_emp_matrix(training_set, labels, states_list):
 
-    toy = options.toy
-    ise = options.ise
-    ese = options.ese
-    intron = options.intron
-    exon = options.exon
+    nuc_dic = {"A": 0, "C": 1, "G": 2, "T": 3}
+    emp_dict = {}
+    emp_matrix = [[0,0,0,0]]
 
-    interval_list = get_intervals_from_labels(labels)
+    if type(labels[0]) == type(list()):
+        for nseq in range(len(training_set)):
+            for nnuc in range(len(training_set[nseq])):
+                if labels[nseq][nnuc] not in emp_dict.keys():
+                    emp_dict[labels[nseq][nnuc]] = [0,0,0,0]
+                emp_dict[labels[nseq][nnuc]][nuc_dic[training_set[nseq][nnuc]]] +=1
+    else:
+        for nseq in range(len(training_set)):
+            for nnuc in range(len(training_set[nseq])):
+                if labels[nnuc] not in emp_dict.keys():
+                    emp_dict[labels[nnuc]] = [0,0,0,0]
+                emp_dict[labels[nnuc]][nuc_dic[training_set[nseq][nnuc]]] +=1
 
-    if ese == 'complex' or exon == 'complex':
-        interval_list = interval_list[1:]
-    if ise == 'complex' or intron == 'complex':
-        interval_list = interval_list[:-1]
+    for state in emp_dict.keys():
+        total = sum(emp_dict[state])
+        for nuc in range(len(emp_dict[state])):
 
-    emp_matrix = [[0, 0, 0, 0]]
+            emp_dict[state][nuc] = emp_dict[state][nuc] /total
 
-    if exon == 'complex':
-        emp_matrix +=[[1, 0, 0, 0],
-                      [0, 1, 0, 0],
-                      [0, 0, 1, 0],
-                      [0, 0, 0, 1]]
-
-    for interval in interval_list:
-        emp_matrix.append(emp.calculation_emp(training_set, interval[0], interval[1]))
-
-    if intron == 'complex':
-        emp_matrix += [[1, 0, 0, 0],
-                       [0, 1, 0, 0],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1]]
-
-    if ese == 'complex':
-        emp_matrix += [[1, 0, 0, 0],
-                       [0, 1, 0, 0],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1]]
-    elif ese == 'simple':
-        emp_matrix.append([0.45,0.05,0.45,0.05])
-
-    if ise == 'complex':
-        emp_matrix += [[1, 0, 0, 0],
-                       [0, 1, 0, 0],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1]]
-    elif ise =='simple':
-        emp_matrix.append([0.033,0.033,0.033,0.9])
+    for nstate in range(1,len(states_list)):
+        emp_matrix.append(emp_dict[states_list[nstate]])
 
     return emp_matrix
 
@@ -185,15 +165,17 @@ def transform_labels(labels, training_set,options,wint,winr):
     labs = []
     intervals = get_intervals_from_labels(labels)
 
-    tia = options.ise
-    rs = options.ese
+    ise = options.ise
+    ese = options.ese
+    intron = options.intron
+    exon = options.exon
 
-    if tia and not rs:
+    if (ise or intron == 'complex') and not ese and exon == 'simple':
         for seq in training_set:
             labs.append(list(labels[:intervals[-1][0]]) +
                         labelling_seq.get_intron_labels_from_emp(wint, seq[intervals[-1][0]:],options))
 
-    elif rs and not tia:
+    elif (ese or exon == 'complex') and not ise and intron == 'simple':
         for seq in training_set:
             labs.append(labelling_seq.get_exon_labels_from_emp(winr, seq[:intervals[0][1]],options) +
                         list(labels[intervals[0][1]:]))
@@ -208,14 +190,13 @@ def transform_labels(labels, training_set,options,wint,winr):
 
 
 def get_hmm(labels,training_set,options):
-    labels2 = labels
-    if options.ise or options.ese:
-        labels2 = transform_labels(labels,training_set,options,12,6)
+    if options.ise or options.ese or options.intron == 'complex' or options.exon == 'complex':
+        labels = transform_labels(labels,training_set,options,12,6)
 
     hmm = {}
     hmm["states"] = get_states(options)
-    hmm["emp"] = get_emp_matrix(training_set, labels,options)
-    hmm["trp"] = get_trp_matrix(hmm['states'],labels2)
+    hmm["emp"] = get_emp_matrix(training_set, labels, hmm['states'])
+    hmm["trp"] = get_trp_matrix(hmm['states'],labels)
 
     return hmm
 

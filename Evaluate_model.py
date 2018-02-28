@@ -81,7 +81,7 @@ def print_accuracy_to_file(options, accuracy):
     elif options.ise == 'complex':
         model += "_tiaC"
 
-    if options.ese == 'complex':
+    if options.ese == 'simple':
         model += "_rs"
     elif options.ese == 'complex':
         model += "_rsC"
@@ -122,6 +122,8 @@ def cross_validation(file, n, labels, toy, tia, rs, out,options):
             tp += result[0]
             fp += result[1]
             fn += result[2]
+
+        print("La proporción de fp es %.4f" % (fp/fp+))
 
         tpr = tp / (tp + fn + fp)
         ppv = tp / (fp + tp)
@@ -230,7 +232,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-s","--save_model",
                         dest="save_model",
-                        action="store",
+                        action="store_true",
                         help = "If set, the model with the closest TPR to the mean will be saved as a pickle file")
 
     options = parser.parse_args()
@@ -251,7 +253,31 @@ if __name__ == "__main__":
     hmm = cross_validation(file, n, labels, toy, ise, ese, out,options)
 
     if options.save_model:
-       with open(options.save_model,"wb") as  p_hmm:
+
+        model = ""
+
+        if options.toy:
+            model += "toy"
+        else:
+            model += "D6"
+
+        if options.exon == 'complex':
+            model += "_eC"
+
+        if options.intron == 'complex':
+            model += "_iC"
+
+        if options.ise == 'simple':
+            model += "_tia"
+        elif options.ise == 'complex':
+            model += "_tiaC"
+
+        if options.ese == 'simple':
+            model += "_rs"
+        elif options.ese == 'complex':
+            model += "_rsC"
+
+        with open("%s.p" % model,"wb") as  p_hmm:
             pickle.dump(hmm,p_hmm)
 
 

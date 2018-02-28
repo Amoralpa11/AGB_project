@@ -39,6 +39,6 @@ if __name__ == '__main__':
 
     for sequence in seq:
 
-        path = vitervi_alg.get_most_probable_path(hmm,seq)
+        path = vitervi_alg.get_most_probable_path(hmm,sequence)
 
-        print("%s\n%s" % (seq,"".join(path)))
+        print("%s\n%s\n" % (sequence,"".join(path)))
