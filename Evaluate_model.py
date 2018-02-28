@@ -5,21 +5,37 @@ import argparse
 import sys
 import math
 import pickle
+import re
 
 
 def evaluate_sequence(seq, labels, hmm):
     path = vitervi_alg.get_most_probable_path(hmm, seq)
 
+    re_ese = re.compile('R')
+    re_ise = re.compile('T')
+
+    has_ese = 0
+    has_ise = 0
+
+    island_content = 'no'
+
+    for state in path :
+        if re_ese.match(state) and not re_ise.match(state):
+            island_content = 'ese'
+        if re_ise.match(state) and not re_ese.match(state):
+            island_content = 'ise'
+        elif re_ise.match(state) and re_ese.match(state):
+            island_content = 'both'
 
     # print ("%s\n%s\n" %("".join(path),"".join(labels)))
 
     if path[20] == labels[20]:
-        result = [1,0,0]
+        result = ['tp',island_content]
     elif '3' in path or "D" in path:
         # print ("%s\n%s\n%s\n" %("".join(path),"".join(labels),seq))
-        result = [0,1,0]
+        result = ['fp',island_content]
     else:
-        result = [0,0,1]
+        result = ['fn',island_content]
 
     return result
 
@@ -116,14 +132,31 @@ def cross_validation(file, n, labels, toy, tia, rs, out,options):
         fp = 0
         fn = 0
 
+        prop_dict = {}
+
         for seq in testing_set:
             seq = seq.rstrip()
             result = evaluate_sequence(seq, labels, hmm)
-            tp += result[0]
-            fp += result[1]
-            fn += result[2]
 
-        print("La proporción de fp es %.4f" % (fp/fp+))
+            if result[0] == 'tp':
+                tp += 1
+            if result[0] == 'fp':
+                fp += 1
+            if result[0] == 'fn':
+                fn += 1
+
+            if result[0] not in prop_dict:
+                prop_dict[result[0]] = {}
+            if result[1] not in prop_dict[result[0]]:
+                prop_dict[result[0]][result[1]] = 0
+
+            prop_dict[result[0]][result[1]] += 1
+
+        for key in prop_dict:
+            out.write("\nFrom the %s: \n" % (key))
+            total = sum(prop_dict[key].values())
+            for islands in prop_dict[key]:
+                out.write("%s %% has %s islands\n" % ((prop_dict[key][islands]*100/total),islands))
 
         tpr = tp / (tp + fn + fp)
         ppv = tp / (fp + tp)
